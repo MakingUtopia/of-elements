@@ -20,8 +20,8 @@ export default class ParticleMatrix {
                 if (y < this.rows / 3)
                     type = 0
                 else
-                    //type = ((x+y) % 2 === 0) ? 2 : 1
-                    type = (x > this.columns / 2) ? 2 : 1
+                    type = ((x+y) % 2 === 0) ? 2 : 1
+                    //type = (x > this.columns / 2) ? 2 : 1
                 column.push(new Particle(x, y, type))
             }
             this.particles.push(column)
