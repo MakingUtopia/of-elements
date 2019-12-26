@@ -31,10 +31,35 @@ export default class Particle {
         this.type = newType
     }
 
+    localAllies() {
+        let localAllies = 1 //including self
+        for (let neighbour of this.neighbours) 
+            if (neighbour.type === this.type)
+                localAllies ++
+        return localAllies
+    }
+
+    odds(otherParticle) {
+        let allyDifference = 
+            this.localAllies() -
+            otherParticle.localAllies() 
+        let polarOdds = 
+            allyDifference / 9
+        let absoluteOdds = 
+            (polarOdds + 1.0) / 2
+        return absoluteOdds
+    }
+
     compete(otherParticle) {
+        let allyDifference = 
+            this.localAllies() -
+            otherParticle.localAllies() 
+        let polarOdds = 
+            allyDifference / 9
+        let absoluteOdds = 
+            (polarOdds + 1.0) / 2
         if (
-            this.type === 1 && Math.random() > 0.5 ||
-            this.type === 2 && Math.random() > 0.5
+            Math.random() < absoluteOdds
         )
             otherParticle.convert(this.type)
         else
