@@ -1,0 +1,16 @@
+{
+  "name": "of-elements",
+  "version": "0.1.0",
+  "description": "Game of elements, balance and opposition",
+  "main": "src/index.html",
+  "scripts": {
+    "test": "npx parcel build test/index.js -d dist/test --target node && mocha dist/test",
+    "start": "npx parcel src/index.html"
+  },
+  "author": "Thomas Chesters",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^6.2.2",
+    "parcel-bundler": "^1.12.4"
+  }
+}
